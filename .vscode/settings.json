@@ -1,0 +1,11 @@
+{
+	"phpcs.enable": true,
+	"phpcs.executablePath": "./vendor/bin/phpcs",
+    "phpcs.standard": "WordPress",
+	"phpcbf.enable": false,
+    "phpcbf.executablePath": "./vendor/bin/phpcbf",
+    "phpcbf.onsave": true,
+    "phpcbf.debug": true,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": false 
+}

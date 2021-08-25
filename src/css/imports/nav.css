@@ -1,0 +1,71 @@
+/* Nav */
+.nav-text.is-active .active-indicator,
+.nav-text:hover .active-indicator {
+	@apply bg-green;
+}
+
+/* Nav: Light Theme */
+.nav-light {
+	@apply bg-white;
+}
+
+.nav-light .nav-main {
+	@apply bg-white lg:bg-transparent;
+}
+
+.nav-light .nav-dropdown {
+	@apply lg:bg-blue;
+}
+
+.nav-light .nav-text {
+	@apply text-black hover:text-green lg:hover:text-black;
+}
+
+.nav-light .nav-dropdown-text {
+	@apply text-black lg:text-white hover:text-green;
+}
+
+.nav-light .nav-text.is-active {
+	@apply text-green lg:text-black;
+}
+
+.nav-light .nav-dropdown-text.is-active {
+	@apply text-green;
+}
+
+.nav-light .nav-burger span {
+	@apply bg-blue;
+}
+
+/* Nav: Dark Theme */
+.nav-dark {
+	@apply bg-blue;
+}
+
+.nav-dark .nav-main {
+	@apply bg-blue lg:bg-transparent;
+}
+
+.nav-dark .nav-dropdown {
+	@apply lg:bg-white;
+}
+
+.nav-dark .nav-text {
+	@apply text-white hover:text-green lg:hover:text-white;
+}
+
+.nav-dark .nav-dropdown-text {
+	@apply text-white lg:text-blue hover:text-green;
+}
+
+.nav-dark .nav-text.is-active {
+	@apply text-green lg:text-white;
+}
+
+.nav-dark .nav-dropdown-text.is-active {
+	@apply text-green;
+}
+
+.nav-dark .nav-burger span {
+	@apply bg-white;
+}

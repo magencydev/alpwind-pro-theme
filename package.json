@@ -1,0 +1,42 @@
+{
+	"name": "alpwind",
+	"version": "0.0.1",
+	"description": "A WordPress development theme that heavily utilizes ACF Pro, Tailwind CSS and Alpine.js",
+	"private": true,
+	"scripts": {
+		"fixpath": "bash ./vendor/bin/phpcs --config-set installed_paths 'vendor/wp-coding-standards/wpcs'",
+		"setup": "composer install && npm install && npm audit fix && npm run fixpath",
+		"js:general": "webpack --config-name general -w",
+		"css:general": "postcss ./src/css/*.css --dir ./assets/css/ --env development -w",
+		"start": "concurrently --kill-others \"npm run js:general\" \"npm run css:general\"",
+		"nopurge": "postcss ./src/css/*.css --dir ./assets/css/ --env prod-nopurge",
+		"purge": "postcss ./src/css/tailwind.css --dir ./assets/css/ --env production",
+		"build": "webpack --config-name general:build && npm run nopurge && npm run purge"
+	},
+	"keywords": [],
+	"author": "Garth Oliver",
+	"license": "ISC",
+	"devDependencies": {
+		"@babel/core": "^7.11.6",
+		"@babel/preset-env": "^7.11.5",
+		"@fullhuman/postcss-purgecss": "^3.0.0",
+		"autoprefixer": "^10.0.1",
+		"babel-loader": "^8.1.0",
+		"concurrently": "^6.2.0",
+		"cssnano": "^4.1.10",
+		"postcss": "^8.3.0",
+		"postcss-cli": "^8.1.0",
+		"postcss-import": "^13.0.0",
+		"webpack": "^4.44.2",
+		"webpack-cli": "^3.3.12"
+	},
+	"dependencies": {
+		"@glidejs/glide": "^3.4.1",
+		"@tailwindcss/forms": "^0.2.1",
+		"alpinejs": "^3.2.1",
+		"axios": "^0.21.1",
+		"glightbox": "^3.0.9",
+		"lax.js": "^2.0.3",
+		"tailwindcss": "^2.2.4"
+	}
+}

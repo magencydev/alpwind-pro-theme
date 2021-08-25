@@ -1,0 +1,163 @@
+/* Gravity Forms */
+h2.gform_title {
+	@apply text-2xl md:text-3xl xl:text-4xl lg:leading-tight;
+	@apply mb-8 lg:mb-10 font-light text-grayer;
+	@apply text-center lg:px-12 uppercase;
+}
+
+h2.gform_submission_error {
+	@apply text-lg md:text-xl xl:text-2xl lg:leading-tight;
+}
+
+.gform_fields {
+	@apply grid grid-cols-1 gap-4;
+}
+
+.ginput_complex {
+	@apply grid grid-cols-1 md:grid-cols-2 gap-4;
+}
+
+.gform_footer {
+	@apply flex justify-between;
+}
+
+.ginput_complex > span, .gfield {
+	@apply relative block p-0;
+}
+
+.ginput_complex > span > label,
+.gfield label.gfield_label {
+	@apply absolute top-0 left-2 text-white -mt-2;
+	@apply px-1 bg-blue text-sm z-10;
+}
+
+.gform_body input ~ label {
+	@apply text-sm pb-0 relative z-10;
+}
+
+legend.gfield_label {
+	@apply text-white pb-2 font-bold text-lg relative z-10;
+}
+
+.gfield_required {
+	@apply hidden;
+}
+
+.gfield {
+	@apply pb-4;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='url'],
+input[type='password'],
+input[type='number'],
+input[type='date'],
+input[type='datetime-local'],
+input[type='month'],
+input[type='search'],
+input[type='tel'],
+input[type='time'],
+input[type='week'],
+select[multiple],
+select,
+textarea {
+	@apply w-full transition-colors duration-300 border-2;
+	@apply focus:outline-none focus:shadow-none focus:ring-transparent;
+	@apply focus:border-green;
+}
+
+.gfield input[type='text'],
+.gfield input[type='email'],
+.gfield input[type='url'],
+.gfield input[type='password'],
+.gfield input[type='number'],
+.gfield input[type='date'],
+.gfield input[type='datetime-local'],
+.gfield input[type='month'],
+.gfield input[type='search'],
+.gfield input[type='tel'],
+.gfield input[type='time'],
+.gfield input[type='week'],
+.gfield select[multiple],
+.gfield select,
+.gfield textarea {
+	@apply px-3 py-4;
+}
+
+.gform_wrapper input, 
+.gform_wrapper select,
+.gform_wrapper textarea {
+	@apply border-grayer border-opacity-20 bg-transparent text-grayer;
+}
+
+.gform_wrapper select option {
+	@apply text-blue;
+}
+
+.ginput_container_fileupload {
+	@apply pt-4 px-3 border border-white;
+}
+
+.gform_fileupload_rules,
+.gfield_description{
+	@apply text-white;
+}
+
+.gfield .gchoice input ~ label,
+.ginput_container_consent input ~ label {
+	@apply text-lg text-white inline-block pl-2 transform translate-y-0.5;
+}
+
+.gfield [type='checkbox']:checked,
+.gfield [type='radio']:checked {
+	@apply bg-blue border-white;
+}
+
+.gfield [type='checkbox']:checked:hover,
+.gfield [type='checkbox']:checked:focus,
+.gfield [type='radio']:checked:hover,
+.gfield [type='radio']:checked:focus {
+	@apply bg-blue  ring-green;
+}
+
+.gfield_description {
+	@apply py-1;
+}
+
+.gform_validation_container,
+.hidden_label .gfield_label,
+.gfield_visibility_hidden,
+.gform_required_legend {
+	@apply hidden;
+}
+
+.validation_error,
+.validation_message,
+.gform_submission_error {
+	@apply text-base text-red;
+}
+
+.gform_submission_error {
+	@apply pb-8;
+}
+
+.validation_error {
+	@apply pb-6;
+}
+
+.validation_message {
+	@apply pt-2;
+}
+
+.gform_confirmation_wrapper {
+	@apply py-12;
+}
+
+.gform_confirmation_message {
+	@apply container px-6 mx-auto text-black text-lg md:text-xl font-light text-center;
+}
+
+.wp-editor-container {
+	@apply mt-4;
+}

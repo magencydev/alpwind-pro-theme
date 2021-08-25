@@ -1,0 +1,11 @@
+/*
+Tailwind Utilities
+This file includes all Tailwind CSS styling.
+
+NOTE: all unused classes in this codebase will not be compiled on build.
+DOCS: https://tailwindcss.com/docs
+*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

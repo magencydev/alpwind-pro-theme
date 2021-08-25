@@ -1,0 +1,38 @@
+.btn {
+	@apply inline-flex items-center justify-center border px-5 py-3;
+	@apply transition-colors xl:text-lg tracking-wide text-center;
+}
+
+.btn-primary {
+	@apply text-charcoal bg-transparent border-charcoal uppercase;
+	@apply font-light hover:bg-charcoal hover:text-white;
+}
+
+.btn-primary-inverse {
+	@apply text-green bg-blue border-blue rounded-sm text-center;
+	@apply font-bold hover:bg-transparent hover:text-blue;
+}
+
+.btn-secondary {
+	@apply text-blue bg-white border-white rounded-sm text-center;
+	@apply font-bold hover:bg-blue hover:text-white hover:border-blue;
+}
+
+.btn-tertiary {
+	@apply font-bold p-0 border-transparent;
+}
+
+.btn-tertiary .btn-arrow,
+.btn-big .btn-arrow,
+.btn-tertiary .btn-arrow-reversed {
+	@apply transition-transform duration-300 ml-1.5;
+}
+
+.btn-tertiary:hover .btn-arrow,
+.btn-big:hover .btn-arrow {
+	@apply transform translate-x-1;
+}
+
+.btn-tertiary:hover .btn-arrow-reversed {
+	@apply transform rotate-180 -translate-x-1;
+}
