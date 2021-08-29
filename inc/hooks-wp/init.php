@@ -15,13 +15,18 @@
  * @return void
  */
 function alpwind_init() {
-
+	/**
+	 * Register navigation menus.
+	 */
 	register_nav_menus(
 		array(
 			'primary' => __( 'Primary', 'alpwind-pro' ),
 		)
 	);
 
+	/**
+	 * Register custom post types.
+	 */
 	register_post_type(
 		'awp-event',
 		array(
@@ -42,6 +47,9 @@ function alpwind_init() {
 		)
 	);
 
+	/**
+	 * Register custom taxonomies.
+	 */
 	$event_labels = array(
 		'name'          => _x( 'Categories', 'Post type general name', 'alpwind-pro' ),
 		'singular_name' => _x( 'Category', 'Post type singular name', 'alpwind-pro' ),
@@ -70,6 +78,9 @@ function alpwind_init() {
 		)
 	);
 
+	/**
+	 * Control post type support.
+	 */
 	if ( class_exists( 'ACF' ) && ! get_field( 'misc_comments', 'options' ) ) {
 		remove_post_type_support( 'post', 'comments' );
 		remove_post_type_support( 'page', 'comments' );
