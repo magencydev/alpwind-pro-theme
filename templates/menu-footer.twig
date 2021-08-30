@@ -1,9 +1,9 @@
 {% for item in items %}
-	<div>
+	<div class="{{ item.classes | join(' ') }}">
 		<a href="{{ item.link }}"
 			target="{{ item.target }}"
 			title="{{ item.title }}"
-			class="{{ item.classes | join(' ') }} block text-white text-xl font-semibold transition-color duration-200 hover:text-red">
+			class="block text-white text-xl font-semibold transition-color duration-200 hover:text-red">
 
 			 {{ item.title }}
 		</a>

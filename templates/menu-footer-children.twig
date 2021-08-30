@@ -1,6 +1,6 @@
 <ul class="block pt-4">
 	{% for item in items %}
-		<li class="pb-3">
+		<li class="pb-3 {{ item.classes | join(' ') }}">
 			<a href="{{ item.link }}"
 				target="{{ item.target }}"
 				title="{{ item.title }}"
