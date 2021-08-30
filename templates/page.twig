@@ -1,0 +1,9 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	{% if sections %}
+		{% for section in sections %}
+			{% include 'sections/' ~ section.acf_fc_layout ~ '.twig' with { 'section': section } %}
+		{% endfor %}
+	{% endif %}
+{% endblock %}

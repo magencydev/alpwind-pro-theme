@@ -27,22 +27,6 @@ function alpwind_wp_enqueue_scripts() {
 	// Theme scripts.
 	wp_enqueue_script( 'alpwind-global-scripts', "$assets/static/global.js", array(), $version, true );
 	wp_enqueue_script( 'alpwind-scripts', "$assets/js/theme.js", array(), $version, true );
-
-	// Register styles for future use.
-	wp_register_style( 'alpwind-testimonials', "$assets/css/testimonials.css", array(), $version, 'all' );
-
-	// Register scripts for future use.
-	wp_register_script( 'alpwind-query', "$assets/js/query.js", array(), $version, true );
-	wp_register_script( 'alpwind-testimonials', "$assets/js/testimonials.js", array(), $version, true );
-
-	wp_localize_script(
-		'alpwind-member-forms',
-		'af_data',
-		array(
-			'public_key'  => get_field( 'public_key', 'options' ),
-			'gc_site_key' => get_field( 'google_recaptcha_site_key', 'options' ),
-		)
-	);
 }
 
 // Add theme function with hook.

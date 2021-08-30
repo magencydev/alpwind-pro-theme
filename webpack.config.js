@@ -2,8 +2,6 @@ const path = require( 'path' );
 
 const files = {
 	'theme': './src/js/main.js',
-	'query': './src/js/query.js',
-	'testimonials': './src/js/testimonials.js',
 }
 
 module.exports = [

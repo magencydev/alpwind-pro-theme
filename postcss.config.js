@@ -8,9 +8,7 @@ module.exports = ({ env }) => ({
     (env === 'production' || env === 'prod-nopurge') ? require('cssnano') : false,
     env === 'production' ? new purgecss({
       content: [
-        './template-parts/**/*.php',
-        './inc/**/*.php',
-        './*.php',
+        './templates/**/*.twig',
         './src/js/**/*.js',
       ],
       defaultExtractor: (content) => {

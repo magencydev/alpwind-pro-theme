@@ -1,0 +1,26 @@
+<nav class="sticky transition-transform transform z-40 top-0 left-0 w-full xl:text-lg"
+	x-data="primary_menu"
+	:class="menu_container_classes"
+	@scroll.window="watch_for_scroll()">
+
+	<div class="container mx-auto px-4 flex flex-wrap justify-between items-center py-4 xl:py-6"
+		@click.away="toggle_menu(false)"
+		x-cloak>
+
+		<a class="block w-8/12 sm:w-4/12 lg:w-2/12 pr-4 overflow-hidden xl:w-3/12 2xl:w-4/12"
+			href="{{ site.url }}"
+			title="{{ site.name }}">
+
+			{% if header_logo %}
+				<img src="{{ header_logo }}" class="w-56 max-w-full" alt="{{ site.description }}" />
+			{% else %}
+				<span class="text-xl xl:text-2xl font-bold">
+					{{ site.name }}
+				</span>
+			{% endif %}
+		</a>
+
+		{% include "menu-primary.twig" with { 'items': primary_menu.get_items } %}
+
+	</div>
+</nav>

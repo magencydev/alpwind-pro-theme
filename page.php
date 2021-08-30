@@ -8,17 +8,10 @@
  * @since 0.0.1
  */
 
-get_header();
+$context = Timber::context();
 
-echo '<main id="main">';
+$timber_post         = new Timber\Post();
+$context['post']     = $timber_post;
+$context['sections'] = get_field( 'sections' );
 
-if ( have_rows( 'sections' ) ) {
-	while ( have_rows( 'sections' ) ) {
-		the_row();
-		get_template_part( 'template-parts/blocks/' . get_row_layout() );
-	}
-}
-
-echo '</main>';
-
-get_footer();
+Timber::render( array( 'page-' . $timber_post->post_name . '.twig', 'page.twig' ), $context );

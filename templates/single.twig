@@ -1,0 +1,27 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<div class="content-wrapper container mx-auto px-4 mb-12 md:mb-24">
+		<article class="post-type-{{ post.post_type }}" id="post-{{ post.ID }}">
+			<img src="{{ post.thumbnail.src | resize( 1200, 300 ) }}">
+			<section>
+				<h1 class="mb-8">
+					{{ post.title }}
+				</h1>
+
+				<p>
+					<span>By</span>
+					<a href="{{ post.author.path }}"> {{ post.author.name }}</a>
+					<span>&bull;</span>
+					<time datetime="{{ post.date | date( 'Y-m-d H:i:s' ) }}">
+						{{ post.date }}
+					</time>
+				</p>
+
+				<div class="wp-content">
+					{{ post.content }}
+				</div>
+			</section>
+		</article>
+	</div><!-- /content-wrapper -->
+{% endblock %}

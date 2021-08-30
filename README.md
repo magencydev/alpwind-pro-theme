@@ -1,7 +1,7 @@
 ![Alpwind Pro Logo](https://github.com/gartholiver/alpwind-pro-theme/blob/master/screenshot.png)
 
 # Alpwind Pro
-A WordPress development theme that heavily utilizes [ACF Pro](https://www.advancedcustomfields.com/pro/), [Tailwind CSS](https://tailwindcss.com/) and [Alpine.js](https://alpinejs.dev/).
+A WordPress development theme that heavily utilizes [ACF Pro](https://www.advancedcustomfields.com/pro/), [Tailwind CSS](https://tailwindcss.com/), [Alpine.js](https://alpinejs.dev/) and [Timber](https://timber.github.io/docs/).
 
 This theme also has VS Code code sniffing configured by default to ensure consistant formatting that adheres to WordPress's [coding standards](https://developer.wordpress.org/coding-standards/).
 

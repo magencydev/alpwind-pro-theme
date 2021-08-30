@@ -1,5 +1,9 @@
 module.exports = {
-	purge: false,
+	mode: 'jit',
+	purge: [
+        './templates/**/*.twig',
+        './src/js/**/*.js',
+    ],
 	darkMode: false, // or 'media' or 'class'
 	theme: {
 		fontFamily: {

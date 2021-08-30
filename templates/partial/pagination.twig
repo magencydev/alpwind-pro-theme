@@ -1,0 +1,64 @@
+{% if posts.pagination.pages is not empty %}
+    <nav class="py-4">
+        <ul class="flex flex-wrap items-center gap-4">
+
+            {# First #}
+            {% if posts.pagination.pages | first and posts.pagination.pages | first.current != true %}
+                <li>
+                    <a href="{{ posts.pagination.pages|first.link }}">First</a>
+                </li>
+            {% else %}
+                <li class="opacity-50">
+                    <button disabled>First</button>
+                </li>
+            {% endif %}
+
+            {# Previous #}
+            {% if posts.pagination.prev %}
+                <li>
+                    <a href="{{ posts.pagination.prev.link }}">Previous</a>
+                </li>
+            {% else %}
+                <li class="opacity-50">
+                    <button disabled>Previous</button>
+                </li>
+            {% endif %}
+
+            {# Pages #}
+            {% for page in posts.pagination.pages %}
+                {% if page.link %}
+                    <li>
+                        <a href="{{ page.link }}" class="{{ page.class }}">{{ page.title }}</a>
+                    </li>
+                {% else %}
+                    <li class="font-bold">
+                        <span class="{{ page.class }}">{{ page.title }}</span>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            {# Next #}
+            {% if posts.pagination.next %}
+                <li>
+                    <a href="{{ posts.pagination.next.link }}">Next</a>
+                </li>
+            {% else %}
+                <li class="opacity-50">
+                    <button disabled>Next</button>
+                </li>
+            {% endif %}
+
+            {# Last #}
+            {% if posts.pagination.pages | last and posts.pagination.pages | last.current != true %}
+                <li>
+                    <a href="{{ posts.pagination.pages|last.link }}">Last</a>
+                </li>
+            {% else %}
+                <li class="opacity-50">
+                    <button disabled>Last</button>
+                </li>
+            {% endif %}
+
+        </ul>
+    </nav>
+{% endif %}

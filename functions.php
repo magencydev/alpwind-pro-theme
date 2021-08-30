@@ -1,6 +1,6 @@
 <?php
 /**
- * The theme's function file for including all necessary theme hooks, filters and functions.
+ * The theme's function file for including main theme class.
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
@@ -8,25 +8,26 @@
  * @since 0.0.1
  */
 
-// Include all theme functions.
-// Note: functions needs to come first.
-require_once 'inc/theme/functions.php';
-require_once 'inc/theme/cron.php';
-require_once 'inc/theme/filters.php';
-require_once 'inc/theme/shortcodes.php';
+// Define path to Composer's autoload file.
+$composer_autoload = get_template_directory() . '/vendor/autoload.php';
 
-// Include all WordPress hooks.
-require_once 'inc/hooks-wp/admin-bar-menu.php';
-require_once 'inc/hooks-wp/admin-enqueue-scripts.php';
-require_once 'inc/hooks-wp/admin-init.php';
-require_once 'inc/hooks-wp/admin-menu.php';
-require_once 'inc/hooks-wp/after-setup-theme.php';
-require_once 'inc/hooks-wp/init.php';
-require_once 'inc/hooks-wp/rest-api-init.php';
-require_once 'inc/hooks-wp/wp-body-open.php';
-require_once 'inc/hooks-wp/wp-enqueue-scripts.php';
-require_once 'inc/hooks-wp/wp-footer.php';
-require_once 'inc/hooks-wp/wp-header.php';
+// Check if Composer's autoload file exists and include it.
+if ( file_exists( $composer_autoload ) ) {
+	require_once $composer_autoload;
+	$timber = new Timber\Timber();
+}
 
-// Include all ACF hooks.
-require_once 'inc/hooks-acf/init.php';
+// Check if Timber class exists - if not, shut it down.
+if ( ! class_exists( 'Timber' ) ) {
+	echo esc_html_e( 'Please make sure Timber is setup correctly.' );
+	exit;
+}
+
+// Sets the directories (inside your theme) to find .twig files.
+Timber::$dirname = array( 'templates', 'views' );
+
+// Pull in main theme class.
+require_once 'inc/classes/class-alpwind-pro-theme.php';
+
+// Initialize theme class to enable all customizations and support.
+$theme = new Alpwind_Pro_Theme();

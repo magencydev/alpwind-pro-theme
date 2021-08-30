@@ -1,0 +1,25 @@
+{% for item in items %}
+	<ul class="lg:absolute left-0 lg:mt-4 w-56 transition-all duration-200 overflow-hidden"
+		role="menu"
+		aria-orientation="vertical"
+		aria-labelledby="options-menu"
+		:class="{
+			'lg:max-h-screen lg:px-4 lg:py-4': active,
+			'lg:max-h-0': !active,
+			'max-h-0': !mobile,
+			'max-h-screen': mobile
+		}">
+
+		{% for item in items %}
+			<li class="w-full px-3 py-2">
+				<a href="{{ item.link }}"
+					target="{{ item.target }}"
+					title="{{ item.title }}"
+					class="transition-colors duration-200">
+
+					{{ item.title }}
+				</a>
+			</li>
+		{% endfor %}
+	</ul>
+{% endfor %}
