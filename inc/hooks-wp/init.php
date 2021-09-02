@@ -30,7 +30,7 @@ function alpwind_init() {
 	register_post_type(
 		'awp-event',
 		array(
-			'labels'             => alpwind_generate_labels( 'Event' ),
+			'labels'             => alpwind_generate_labels( 'Event', 'Events' ),
 			'public'             => true,
 			'publicly_queryable' => true,
 			'show_ui'            => true,
