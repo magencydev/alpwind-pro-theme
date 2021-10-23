@@ -1,22 +1,29 @@
-/**
- * General Scripts
- * Scripts to be included on every page of theme.
- */
+import Alpine from 'alpinejs'
+import HeaderMenu from './alpine/HeaderMenu'
 
-import Smooth_Scroll from './classes/Smooth_Scroll';
-import Alpine from 'alpinejs';
-import primary_menu from './alpine/primary_menu';
+window.Alpine = Alpine
+Alpine.data('HeaderMenu', HeaderMenu)
+Alpine.start()
 
-window.Alpine = Alpine;
-Alpine.data( 'primary_menu', primary_menu );
-Alpine.start();
+import Alpwind from './classes/Alpwind'
+import PageLoad from './classes/PageLoad'
+import lax from 'lax.js'
 
-( function () {
-	if ( document.querySelector( 'a[href^="#"]' ) ) {
-		let scrollable = new Smooth_Scroll( 'a[href^="#"]', {
-			always_home: false
-		} );
+window.Alpwind = new Alpwind()
 
-		scrollable.mount();
-	}
-} )();
+new PageLoad(() => {
+	lax.init()
+	lax.addDriver('scrollY', () => window.scrollY)
+
+	lax.addElements('.drift', {
+		scrollY: {
+			translateY: [
+				["elInY", "elOutY"],
+				{
+					1023: [0, 0],
+					1024: ['-elHeight/4', 'elHeight/4'],
+				},
+			]
+		}
+	})
+})

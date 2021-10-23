@@ -1,23 +1,21 @@
 {% if primary_menu %}
-	<div class="w-4/12 lg:hidden flex justify-end relative z-20">
+	<div class="relative z-20 flex justify-end w-4/12 lg:hidden">
 		<button class="w-8 focus:outline-none"
-			@click="toggle_menu(!open)">
+			@click="toggleMenu(!open)">
 
-			<span class="transform transition-all rounded-md block w-full h-1 mb-1"
+			<span class="block w-full h-1 mb-1 transition-all transform bg-current rounded-md"
 				:class="open ? 'rotate-45 translate-y-2' : ''"></span>
-			<span class="transform transition-all rounded-md block w-full h-1 mb-1"
+			<span class="block w-full h-1 mb-1 transition-all transform bg-current rounded-md"
 				:class="open ? 'opacity-0' : ''"></span>
-			<span class="transform transition-all rounded-md block w-full h-1"
+			<span class="block w-full h-1 transition-all transform bg-current rounded-md"
 				:class="open ? '-rotate-45 -translate-y-2' : ''"></span>
 		</button>
 	</div>
 
-	<div :class="drawer_container_classes" x-cloak
-		class="top-0 left-0 z-10 fixed lg:static h-screen lg:h-auto lg:flex lg:items-center
-			xl:justify-end lg:translate-x-0 pt-20 lg:pt-0 w-72 sm:w-80 md:w-96 lg:w-10/12 xl:w-9/12
-			2xl:w-8/12 transition-transform transform duration-300">
+	<div :class="drawerContainerClasses" x-cloak
+		class="fixed top-0 left-0 z-10 h-screen pt-20 transition-transform duration-300 transform bg-black lg:static lg:h-auto lg:flex lg:items-center xl:justify-end lg:translate-x-0 lg:pt-0 w-72 sm:w-80 md:w-96 lg:w-10/12 xl:w-9/12 2xl:w-8/12 lg:bg-transparent">
 
-		<ul class="w-full flex flex-wrap lg:flex-nowrap lg:items-center lg:justify-end px-6 sm:px-10 lg:px-0 py-3 lg:pl-4">
+		<ul class="flex flex-wrap w-full px-6 py-3 lg:flex-nowrap lg:items-center lg:justify-end sm:px-10 lg:px-0 lg:pl-4">
 
 			{% for item in items %}
 				<li class="relative px-3 lg:px-4 xl:px-5 py-2 w-full lg:w-auto {{ item.classes | join(' ') }}"
@@ -28,15 +26,14 @@
 					<a href="{{ item.link }}"
 						target="{{ item.target }}"
 						title="{{ item.title }}"
-						class="transition-colors duration-200 flex justify-between items-stretch lg:block
-							lg:whitespace-nowrap">
+						class="flex items-stretch justify-between transition-colors duration-200 lg:block lg:whitespace-nowrap">
 
 						{{ item.title }}
 
 						{% if item.children %}
 							<span class="items-center px-4 lg:hidden"
 								@click="mobile = !mobile; active = !active; $event.preventDefault();">
-								<svg class="-mr-1 ml-2 h-5 w-5 transform transition-transform duration-100"
+								<svg class="w-5 h-5 ml-2 -mr-1 transition-transform duration-100 transform"
 									:class="mobile ? '-rotate-180' : ''"
 									xmlns="http://www.w3.org/2000/svg"
 									viewBox="0 0 20 20"

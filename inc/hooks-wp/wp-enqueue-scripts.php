@@ -20,13 +20,19 @@ function alpwind_wp_enqueue_scripts() {
 	$assets  = get_template_directory_uri() . '/assets';
 	$version = '0.0.1';
 
-	// Theme styles.
-	wp_enqueue_style( 'utility-styles', "$assets/css/tailwind.css", array(), $version, 'all' );
-	wp_enqueue_style( 'theme-styles', "$assets/css/theme.css", array(), $version, 'all' );
+	// Add Theme styles.
+	wp_enqueue_style( 'alpwind-utilities', "$assets/css/tailwind.css", array(), $version, 'all' );
+	wp_enqueue_style( 'alpwind-theme', "$assets/css/theme.css", array(), $version, 'all' );
 
-	// Theme scripts.
-	wp_enqueue_script( 'alpwind-global-scripts', "$assets/static/global.js", array(), $version, true );
+	// Register Additional styles.
+	wp_register_style( 'alpwind-post', "$assets/css/post.css", array(), $version, 'all' );
+	wp_register_style( 'alpwind-print', "$assets/css/print.css", array(), $version, 'print' );
+
+	// Add Theme scripts.
 	wp_enqueue_script( 'alpwind-scripts', "$assets/js/theme.js", array(), $version, true );
+
+	// Register Additional scripts.
+	wp_register_script( 'alpwind-post', "$assets/js/post.js", array(), $version, true );
 }
 
 // Add theme function with hook.

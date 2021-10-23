@@ -1,0 +1,20 @@
+<header class="relative py-24 md:py-32 lg:py-48">
+	<img src="{{section.background_image['url']}}"
+		alt="{{section.background_image['url']}}"
+		class="absolute w-full h-full inset-0 object-cover" />
+
+	<div class="container mx-auto px-6 relative z-10">
+		<h1>{{section.header}}</h1>
+		<p>{{section.description}}</p>
+
+		{% if section.cta.url %}
+			<a href="{{section.cta.url}}"
+				target="{{section.cta.target}}"
+				title="{{section.cta.title}}"
+				class="btn btn-primary">
+
+				{{section.cta.title}}
+			</a>
+		{% endif %}	
+	</div>
+</header>

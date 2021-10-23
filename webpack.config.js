@@ -1,7 +1,8 @@
-const path = require( 'path' );
+const path = require( 'path' )
 
 const files = {
 	'theme': './src/js/main.js',
+	'post': './src/js/post.js',
 }
 
 module.exports = [
@@ -31,6 +32,4 @@ module.exports = [
 			],
 		},
 	},
-];
-
-
+]
