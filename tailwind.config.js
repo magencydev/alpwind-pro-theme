@@ -25,11 +25,7 @@ module.exports = {
 			},
 			aqua: '#6DD3CE',
 		},
-		extend: {
-			fontSize: {
-				'banner': '4.75rem',
-			}
-		},
+		extend: {},
 	},
 	variants: {
 		extend: {},
