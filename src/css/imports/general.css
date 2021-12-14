@@ -1,59 +1,8 @@
 body {
 	max-width: 1920px;
-	@apply font-body overflow-x-hidden mx-auto relative;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	@apply font-display mb-0 font-normal;
-}
-
-h1 {
-	@apply text-4xl md:text-5xl xl:text-6xl lg:leading-none;
-}
-
-h2:not(.gform_title) {
-	@apply text-3xl md:text-4xl xl:text-5xl;
-	@apply lg:leading-tight;
-}
-
-h3 {
-	@apply text-2xl md:text-3xl xl:text-4xl;
-	@apply lg:leading-tight;
-}
-
-h4 {
-	@apply text-xl sm:text-2xl lg:text-3xl;
-	@apply lg:leading-tight;
-}
-
-h5 {
-	@apply text-lg sm:text-xl lg:text-2xl;
-}
-
-h6 {
-	@apply text-base sm:text-lg lg:text-xl;
-}
-
-p {
-	@apply mb-4;
+	@apply overflow-x-hidden mx-auto relative;
 }
 
 [x-cloak] {
 	@apply hidden;
-}
-
-@media screen and (min-width: 1024px) {
-	.extra-height {
-		height: calc( 100% + 96px );
-	}
-}
-
-.category-splitter span:nth-child(1n+3):before {
-	content: ', ';
-	display: inline;
 }
