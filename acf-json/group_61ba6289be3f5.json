@@ -1,0 +1,42 @@
+{
+    "key": "group_61ba6289be3f5",
+    "title": "Theme: Defaults",
+    "fields": [
+        {
+            "key": "field_61ba62d32e646",
+            "label": "Add Some Fields",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "This page will hold default fields. Add some in Custom Fields under Theme: Defaults.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "theme-defaults"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1639605026
+}
