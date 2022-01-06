@@ -3,13 +3,13 @@
 		<a href="{{ item.link }}"
 			target="{{ item.target }}"
 			title="{{ item.title }}"
-			class="block text-white text-xl font-semibold transition-color duration-200 hover:text-red">
+			class="block text-xl font-semibold text-white duration-200 transition-color hover:text-red">
 
 			 {{ item.title }}
 		</a>
 
 		{% if item.children %}
-			{% include 'menu-footer-children.twig' with { 'items': item.children } %}
+			{% include 'menus/menu-footer-children.twig' with { 'items': item.children } %}
 		{% endif %}
 	</div>
 {% endfor %}

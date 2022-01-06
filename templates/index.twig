@@ -1,9 +1,9 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	<div class="container mx-auto px-4 mb-12 lg:mb-24">
+	<div class="container px-4 mx-auto mb-12 lg:mb-24">
 		{% for post in posts %}
-			{% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
+			{% include ['previews/'~post.post_type~'.twig', 'previews/post.twig'] %}
 		{% endfor %}
 
 		{% include 'partial/pagination.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}

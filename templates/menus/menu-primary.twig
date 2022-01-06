@@ -47,7 +47,7 @@
 						<span class="hidden lg:block active-indicator absolute transition-colors duration-200 bottom-0.5 left-0 right-0 mx-auto rounded-full w-1.5 h-1.5"></span>
 					</a>
 
-					{% include 'menu-primary-children.twig' with { 'items': item.children } %}
+					{% include 'menus/menu-primary-children.twig' with { 'items': item.children } %}
 				</li>
 			{% endfor %}
 		</ul>
