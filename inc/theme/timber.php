@@ -33,7 +33,11 @@ add_filter( 'timber/context', 'alpwind_timber_context' );
  * @param string $twig Get extension.
  */
 function alpwind_timber_twig( $twig ) {
+	// Add extensions to Twig.
 	$twig->addExtension( new Twig\Extension\StringLoaderExtension() );
+
+	// Add functions to Twig.
+	$twig->addFunction( new Timber\Twig_Function( 'get_image', 'alpwind_get_image' ) );
 
 	return $twig;
 }

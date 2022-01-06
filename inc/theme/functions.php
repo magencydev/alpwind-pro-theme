@@ -60,3 +60,24 @@ function alpwind_generate_labels( $singular, $plural, $type = 'post' ) {
 		);
 	}
 }
+
+/**
+ * Alpwind Get Image Function
+ * Renders an image based on attachment ID
+ *
+ * @param int    $attachment_id Image attachment ID.
+ * @param string $size Image size.
+ * @param string $classes A string of CSS classes to add to image.
+ *
+ * @return string
+ */
+function alpwind_get_image( $attachment_id = 0, $size = 'large', $classes = '' ) {
+	return wp_get_attachment_image(
+		$attachment_id,
+		$size,
+		false,
+		array(
+			'class' => $classes,
+		)
+	);
+}

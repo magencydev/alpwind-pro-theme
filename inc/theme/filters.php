@@ -45,8 +45,16 @@ add_filter( 'acf/load_field/name=gravity_form', 'alpwind_gravity_forms_dropdown'
  * @return string
  */
 function alpwind_gform_submit_button( $button, $form ) {
-	return "<button class='btn btn-primary mt-4 w-full'
-		id='gform_submit_button_{$form['id']}'>{$form['button']['text']}</button>";
+	ob_start();
+	?>
+	<button
+		class='w-full mt-4 btn btn-primary'
+		id='gform_submit_button_<?php echo esc_attr( $form['id'] ); ?>'
+	>
+		<?php echo wp_kses( $form['button']['text'], wp_kses_allowed_html( 'post' ) ); ?>
+	</button>
+	<?php
+	return ob_get_clean();
 }
 add_filter( 'gform_submit_button', 'alpwind_gform_submit_button', 10, 2 );
 
