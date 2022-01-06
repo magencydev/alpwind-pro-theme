@@ -17,7 +17,7 @@
 function alpwind_wp_head() {
 
 	if ( class_exists( 'ACF' ) ) {
-		the_field( 'scripts_head', 'options' );
+		the_field( 'head_scripts', 'options' );
 	}
 }
 

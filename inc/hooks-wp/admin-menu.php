@@ -19,11 +19,11 @@ function alpwind_admin_menu() {
 	global $submenu;
 
 	if ( class_exists( 'ACF' ) ) {
-		if ( ! get_field( 'misc_comments', 'options' ) ) {
+		if ( ! get_field( 'features_comments', 'options' ) ) {
 			remove_menu_page( 'edit-comments.php' );
 		}
 
-		if ( ! get_field( 'misc_posts', 'options' ) ) {
+		if ( ! get_field( 'features_posts', 'options' ) ) {
 			remove_menu_page( 'edit.php' );
 		}
 	}

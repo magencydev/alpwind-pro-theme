@@ -81,7 +81,7 @@ function alpwind_init() {
 	/**
 	 * Control post type support.
 	 */
-	if ( class_exists( 'ACF' ) && ! get_field( 'misc_comments', 'options' ) ) {
+	if ( class_exists( 'ACF' ) && ! get_field( 'features_comments', 'options' ) ) {
 		remove_post_type_support( 'post', 'comments' );
 		remove_post_type_support( 'page', 'comments' );
 	}
