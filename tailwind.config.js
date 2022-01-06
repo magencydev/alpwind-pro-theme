@@ -1,5 +1,8 @@
 module.exports = {
-  content: ['./templates/**/*.twig'],
+  content: [
+    './templates/**/*.twig',
+    './inc/theme/filters.php',
+  ],
   theme: {
     extend: {},
   },

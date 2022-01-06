@@ -9,7 +9,7 @@ module.exports = ({ env }) => ({
     env === 'production' ? new purgecss({
       content: [
         './templates/**/*.twig',
-        './src/js/**/*.js',
+        './inc/theme/filters.php',
       ],
       defaultExtractor: (content) => {
         return content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || []
