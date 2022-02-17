@@ -10,6 +10,7 @@ This theme also has VS Code code sniffing configured by default to ensure consis
 2. Import the acf-export.json file in the json folder.
 3. Open theme in terminal and install dev dependencies `npm run setup`.
 4. Activate theme in WordPress admin.
+5. Go into ACF Custom Fields page and sync prebuilt field groups.
 
 ## Build Process
 There are a couple NPM scripts should make life easier.
