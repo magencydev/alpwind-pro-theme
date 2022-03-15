@@ -3,10 +3,10 @@
  * A custom plugin for smooth scrolling.
  */
 
-export default class {
-	constructor(el, options) {
-		this.always_home = options.always_home ? options.always_home : false
+ export default class {
+	constructor(el, hash = false) {
 		this.items = document.querySelectorAll(el)
+		this.hash = hash
 	}
 
 	mount() {
@@ -16,38 +16,32 @@ export default class {
 			item.addEventListener('click', function(e) {
 				let href = this.getAttribute('href')
 				let tar = href.slice(href.indexOf('#'))
-				let pos = this.getAttribute('data-scroll-to')
-					? this.getAttribute('data-scroll-to')
-					: 'start'
 
-				if (self.always_home && window.location.pathname !== '/') {
-					e.preventDefault()
-					window.location.href = '/' + tar
-				} else {
-					self.scroll_to(tar, e, pos)
-				}
+				e.preventDefault()
+				self.scroll_to(tar)
 			})
 		}
 
-		if (window.location.hash) {
+		if (this.hash) {
 			setTimeout(() => {
-				this.scroll_to(window.location.hash, false, 'start')
+				this.scroll_to(this.hash)
+			}, 250)
+
+			setTimeout(() => {
+				window.location.hash = this.hash
 			}, 500)
 		}
 	}
 
-	scroll_to(target, event, pos = 'center') {
+	scroll_to(target) {
+		if (!document.querySelector(target)) return
+
 		let tar = document.querySelector(target)
 
-		if (tar) {
-			if (event) {
-				event.preventDefault()
-			}
-
-			tar.scrollIntoView({
-				behavior: 'smooth',
-				block: pos
-			})
-		}
+		window.scroll({
+			top: window.pageYOffset + tar.getBoundingClientRect().top - 85,
+			left: 0,
+			behavior: 'smooth',
+		})
 	}
 }

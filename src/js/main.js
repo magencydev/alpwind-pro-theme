@@ -1,17 +1,33 @@
+// Import and Initialize Alpine.js
 import Alpine from 'alpinejs'
-import HeaderMenu from './alpine/HeaderMenu'
-
 window.Alpine = Alpine
-Alpine.data('HeaderMenu', HeaderMenu)
 Alpine.start()
 
-import Alpwind from './classes/Alpwind'
-import PageLoad from './classes/PageLoad'
+// Import and setup Theme utilities
+import Origin from './classes/Origin'
+window.Origin = new Origin()
+
+// Import all other dependencies
 import lax from 'lax.js'
+import SmoothScroll from './classes/SmoothScroll'
 
-window.Alpwind = new Alpwind()
 
-new PageLoad(() => {
+// On content load event:
+document.addEventListener('DOMContentLoaded', () => {
+	// Smooth Scroll
+	let path = window.location.pathname
+
+	if (document.querySelector('a[href^="#"]')) {
+		let scrollable = new SmoothScroll('a[href^="#"]')
+		scrollable.mount()
+	}
+
+	if (document.querySelector('a[href^="' + path + '#"]')) {
+		let innerScrollable = new SmoothScroll('a[href^="' + path + '#"]')
+		innerScrollable.mount()
+	}
+
+	// Parallax
 	lax.init()
 	lax.addDriver('scrollY', () => window.scrollY)
 

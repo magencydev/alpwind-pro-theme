@@ -1,26 +1,140 @@
-<nav class="top-0 left-0 z-40 w-full transition-transform transform xl:text-lg"
-	x-data="HeaderMenu"
-	:class="menuContainerClasses"
-	@scroll.window="watchScroll()">
-
-	<div class="container flex flex-wrap items-center justify-between px-4 py-4 mx-auto xl:py-6"
-		@click.away="toggleMenu(false)"
-		x-cloak>
-
-		<a class="block w-8/12 pr-4 overflow-hidden sm:w-4/12 lg:w-2/12 xl:w-3/12 2xl:w-4/12"
+<nav
+	x-data="{ open: false, atTop: true }"
+	@scroll.window="atTop = window.scrollY < 300"
+	class="top-0 left-0 z-40 w-full transition-transform transform xl:text-lg"
+	:class="{
+		'relative': atTop,
+		'sticky bg-black text-white': !atTop
+	}"
+>
+	<div
+		class="container flex flex-wrap items-center justify-between px-4 py-4 mx-auto xl:py-6"
+		@click.away="open = false"
+		x-cloak
+	>
+		{# Branding #}
+		<a
+			class="block w-8/12 pr-4 overflow-hidden sm:w-4/12 lg:w-2/12 xl:w-3/12 2xl:w-4/12"
 			href="{{ site.url }}"
-			title="{{ site.name }}">
-
+			title="{{ site.name }}"
+		>
 			{% if header_logo %}
-				<img src="{{ header_logo }}" class="w-56 max-w-full" alt="{{ site.description }}" />
+				<img
+					draggable="false"
+					src="{{ header_logo }}"
+					class="w-56 max-w-full"
+					alt="{{ site.description }}"
+				/>
 			{% else %}
 				<span class="text-xl font-bold xl:text-2xl">
 					{{ site.name }}
 				</span>
 			{% endif %}
-		</a>
+		</a> {# End: Branding #}
 
-		{% include "menus/menu-primary.twig" with { 'items': primary_menu.get_items } %}
+		{# Primary Menu #}
+		{% if primary_menu %}
+			<div class="relative z-20 flex justify-end w-4/12 lg:hidden">
+				<button
+					class="w-8 focus:outline-none"
+					@click="open = !open"
+				>
+					<span
+						class="block w-full h-1 mb-1 transition-all transform bg-current rounded-md"
+						:class="open ? 'rotate-45 translate-y-2' : ''"
+					></span>
+					<span
+						class="block w-full h-1 mb-1 transition-all transform bg-current rounded-md"
+						:class="open ? 'opacity-0' : ''"
+					></span>
+					<span
+						class="block w-full h-1 transition-all transform bg-current rounded-md"
+						:class="open ? '-rotate-45 -translate-y-2' : ''"
+					></span>
+				</button>
+			</div>
 
+			<div
+				x-cloak
+				class="fixed top-0 left-0 z-10 h-screen pt-20 transition-transform duration-300 transform bg-black lg:static lg:h-auto lg:flex lg:items-center xl:justify-end lg:translate-x-0 lg:pt-0 w-72 sm:w-80 md:w-96 lg:w-10/12 xl:w-9/12 2xl:w-8/12 lg:bg-transparent"
+				:class="{
+					'translate-x-0': open,
+					'-translate-x-72 sm:-translate-x-80 md:-translate-x-96': !open,
+				}"
+			>
+				<ul class="flex flex-wrap w-full px-6 py-3 lg:flex-nowrap lg:items-center lg:justify-end sm:px-10 lg:px-0 lg:pl-4">
+					{% for item in primary_menu.get_items %}
+						<li
+							class="relative px-3 lg:px-4 xl:px-5 py-2 w-full lg:w-auto {{ item.classes | join(' ') }}"
+							x-data="{ active: false, mobile: false }"
+							@mouseover="active = true"
+							@mouseleave="active = false"
+						>
+							<a
+								href="{{ item.link }}"
+								target="{{ item.target }}"
+								title="{{ item.title }}"
+								class="flex items-stretch justify-between text-white duration-200 lg:text-black lg:block lg:whitespace-nowrap"
+							>
+								{{ item.title }}
+
+								{% if item.children %}
+									<span
+										class="items-center px-4 lg:hidden"
+										@click="mobile = !mobile; active = !active; $event.preventDefault();"
+									>
+										<svg
+											class="w-5 h-5 ml-2 -mr-1 transition-transform duration-100 transform"
+											:class="mobile ? '-rotate-180' : ''"
+											xmlns="http://www.w3.org/2000/svg"
+											viewBox="0 0 20 20"
+											fill="currentColor"
+											aria-hidden="true"
+										>
+											<path
+												fill-rule="evenodd"
+												d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+												clip-rule="evenodd"
+											/>
+										</svg>
+									</span>
+								{% endif %}
+
+								<span class="hidden lg:block active-indicator absolute transition-colors duration-200 bottom-0.5 left-0 right-0 mx-auto rounded-full w-1.5 h-1.5"></span>
+							</a>
+
+							{# Child Menu Items #}
+							{% if item.items %}
+								<ul
+									class="left-0 w-56 overflow-hidden transition-all duration-200 lg:absolute lg:mt-4"
+									role="menu"
+									aria-orientation="vertical"
+									aria-labelledby="options-menu"
+									:class="{
+										'lg:max-h-screen lg:px-4 lg:py-4': active,
+										'lg:max-h-0': !active,
+										'max-h-0': !mobile,
+										'max-h-screen': mobile
+									}"
+								>
+									{% for child in item.items %}
+										<li class="w-full px-3 py-2 {{ child.classes | join(' ') }}">
+											<a
+												href="{{ child.link }}"
+												target="{{ child.target }}"
+												title="{{ child.title }}"
+												class="transition-colors duration-200"
+											>
+												{{ child.title }}
+											</a>
+										</li>
+									{% endfor %}
+								</ul>
+							{% endif %} {# End: Child Menu Items #}
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		{% endif %} {# End: Primary Menu #}
 	</div>
 </nav>

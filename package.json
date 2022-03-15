@@ -4,7 +4,9 @@
 	"description": "A WordPress development theme that heavily utilizes ACF Pro, Tailwind CSS and Alpine.js",
 	"private": true,
 	"scripts": {
-		"fixpath": "bash ./vendor/bin/phpcs --config-set installed_paths 'vendor/wp-coding-standards/wpcs'",
+		"fixpath": "run-script-os",
+		"fixpath:darwin:linux": "./vendor/bin/phpcs --config-set installed_paths 'vendor/wp-coding-standards/wpcs'",
+		"fixpath:win32": "bash ./vendor/bin/phpcs --config-set installed_paths 'vendor/wp-coding-standards/wpcs'",
 		"setup": "composer install && npm install && npm audit fix && npm run fixpath",
 		"js:general": "webpack --config-name general -w",
 		"css:general": "postcss ./src/css/*.css --dir ./assets/css/ --env development -w",
@@ -27,6 +29,7 @@
 		"postcss": "^8.4.5",
 		"postcss-cli": "^9.1.0",
 		"postcss-import": "^14.0.2",
+		"run-script-os": "^1.1.6",
 		"webpack": "^5.65.0",
 		"webpack-cli": "^4.9.1"
 	},

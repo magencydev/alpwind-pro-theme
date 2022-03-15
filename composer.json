@@ -5,5 +5,10 @@
     },
     "require": {
         "timber/timber": "^1.18"
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
     }
 }

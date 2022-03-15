@@ -2,6 +2,7 @@
 
 	<div class="container relative z-10 px-6 pb-4 mx-auto">
 		<div class="flex flex-wrap justify-between gap-6 sm:gap-8 xl:gap-12">
+			{# Branding #}
 			<div>
 				<a href="{{ site.url }}" title="{{ site.name }}">
 					{% if footer_logo %}
@@ -12,11 +13,41 @@
 						</span>
 					{% endif %}
 				</a>
-			</div>
+			</div> {# End: Branding #}
 
+			{# Footer Menu #}
 			<div class="grid flex-grow grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 lg:gap-8">
-				{% include 'menus/menu-footer.twig' with { 'items': primary_menu.get_items } %}
-			</div>
+				{% for item in primary_menu.get_items %}
+					<div class="{{ item.classes | join(' ') }}">
+						<a
+							href="{{ item.link }}"
+							target="{{ item.target }}"
+							title="{{ item.title }}"
+							class="block text-xl font-semibold text-white duration-200 transition-color hover:text-red"
+						>
+							{{ item.title }}
+						</a>
+
+						{# Footer Child Menu #}
+						{% if item.children %}
+							<ul class="block pt-4">
+								{% for item in item.children %}
+									<li class="pb-3 {{ item.classes | join(' ') }}">
+										<a
+											href="{{ item.link }}"
+											target="{{ item.target }}"
+											title="{{ item.title }}"
+											class="text-sm text-white hover:text-red"
+										>
+											{{ item.title }}
+										</a>
+									</li>
+								{% endfor %}
+							</ul>
+						{% endif %} {# End: Footer Child Menu #}
+					</div>
+				{% endfor %}
+			</div> {# End: Footer Menu #}
 		</div>
 	</div>
 </footer>
