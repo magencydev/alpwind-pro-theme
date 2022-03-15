@@ -19,9 +19,7 @@ function alpwind_timber_context( $context ) {
 	$context['primary_menu'] = new Timber\Menu( 'primary' );
 
 	// ACF fields.
-	$context['favicon']     = get_field( 'misc_favicon', 'options' );
-	$context['header_logo'] = get_field( 'header_logo', 'options' );
-	$context['footer_logo'] = get_field( 'footer_logo', 'options' );
+	$context['options'] = get_fields( 'options' );
 
 	return $context;
 }

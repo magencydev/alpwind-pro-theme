@@ -18,13 +18,8 @@
 			href="{{ site.url }}"
 			title="{{ site.name }}"
 		>
-			{% if header_logo %}
-				<img
-					draggable="false"
-					src="{{ header_logo }}"
-					class="w-56 max-w-full"
-					alt="{{ site.description }}"
-				/>
+			{% if options.header_logo %}
+				{{ get_image(options.header_logo, 'full', 'w-56 max-w-full') }}
 			{% else %}
 				<span class="text-xl font-bold xl:text-2xl">
 					{{ site.name }}

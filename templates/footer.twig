@@ -5,8 +5,8 @@
 			{# Branding #}
 			<div>
 				<a href="{{ site.url }}" title="{{ site.name }}">
-					{% if footer_logo %}
-						<img src="{{ footer_logo }}" class="w-40 max-w-full" alt="{{ site_tagline }}" />
+					{% if options.footer_logo %}
+						{{ get_image(options.footer_logo, 'full', 'w-40 max-w-full') }}
 					{% else %}
 						<span class="text-xl font-bold text-white xl:text-2xl">
 							{{ site.name }}
